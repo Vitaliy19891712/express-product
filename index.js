@@ -28,16 +28,21 @@ const transporter = nodemailer.createTransport({
 
 app.post("/sendMessage", async (req, res) => {
   let { email, name, phone, message } = req.body;
-  const info = await transporter.sendMail({
-    from: '"Письмо с портфолио" <vitaliymyrafa@yandex.ru>',
-    to: "vitaliymyrafa@yandex.ru",
-    subject: "Связаться со мной",
-    html: `<h1>Сообщение с портфолио</h1>
+  try {
+    const info = await transporter.sendMail({
+      from: '"Письмо с портфолио" <vitaliymyrafa@yandex.ru>',
+      to: "vitaliymyrafa@yandex.ru",
+      subject: "Связаться со мной",
+      html: `<h1>Сообщение с портфолио</h1>
     <div><h2>Имя</h2>${name}</div>
     <div><h2>Телефон</h2>${phone}</div>
     <div><h2>Email</h2>${email}</div>
     <div><h2>Сообщение</h2>${message}</div>`,
-  });
+    });
+    res.sendStatus(200);
+  } catch (err) {
+    res.json(err);
+  }
 });
 
 app.listen(port, () => {
