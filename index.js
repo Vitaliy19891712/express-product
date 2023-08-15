@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3010;
 app.use(cors());
+app.use(express.static("public"));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
