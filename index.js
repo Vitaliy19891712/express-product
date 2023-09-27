@@ -5,7 +5,22 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3010;
-app.use(cors());
+const allowedOrigins = ["https://vitaliy19891712.github.io/portfolio/", "https://vitaliy19891712.github.io"];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 app.use(express.static("public"));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
