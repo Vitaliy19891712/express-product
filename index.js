@@ -5,20 +5,13 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3010;
-const allowedOrigins = ["https://vitaliy19891712.github.io/portfolio/", "https://vitaliy19891712.github.io"];
+
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) {
-        return callback(null, true);
-      }
-
-      if (allowedOrigins.includes(origin)) {
-        const msg = "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
+    origin: false,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   })
 );
 app.use(express.static("public"));
@@ -43,7 +36,7 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/sendMessage", async (req, res) => {
-    res.set("Access-Control-Allow-Origin", "https://vitaliy19891712.github.io/portfolio");
+
   let { email, name, phone, message } = req.body;
   try {
     const info = await transporter.sendMail({
