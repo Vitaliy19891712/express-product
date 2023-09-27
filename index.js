@@ -5,15 +5,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3010;
-
-app.use(
-  cors({
-    origin: false,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  })
-);
+app.use(cors());
 app.use(express.static("public"));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,7 +28,6 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/sendMessage", async (req, res) => {
-
   let { email, name, phone, message } = req.body;
   try {
     const info = await transporter.sendMail({
