@@ -3,10 +3,11 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-var app = express()
-//   .configure(function () {
-//   this.use("/public", express.static("public"));
-// });
+var app = express();
+
+app.configure(function () {
+  this.use("/public", express.static("public"));
+});
 const port = process.env.PORT || 3010;
 
 app.use(cors());
