@@ -22,6 +22,11 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.use("/pdf", express.static(__dirname + "/public/Resume.pdf"));
+
+// app.get("/resume", (req, res) => {
+//   res.sendFile("Resume.pdf", { root: path.join(__dirname, "public") });
+// });
 const transporter = nodemailer.createTransport({
   host: "smtp.yandex.ru",
   port: 465,
