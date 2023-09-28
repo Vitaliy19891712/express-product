@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 3010;
+const port = process.env.PORT || 3010;
 app.use(cors());
 app.use(express.static("public"));
 // parse application/x-www-form-urlencoded
