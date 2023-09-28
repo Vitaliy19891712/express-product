@@ -5,14 +5,14 @@ const bodyParser = require("body-parser");
 
 var app = express();
 
-app.configure(function () {
-  this.use("/public", express.static("public"));
-});
+// app.configure(function () {
+//   this.use("/public", express.static("public"));
+// });
 const port = process.env.PORT || 3010;
 
 app.use(cors());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
