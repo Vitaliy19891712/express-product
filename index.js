@@ -7,7 +7,11 @@ var app = express();
 
 const port = process.env.PORT || 3010;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://portfolio-taupe-eight-72.vercel.app",
+  })
+);
 
 //app.use(express.static("public"));
 
