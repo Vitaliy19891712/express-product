@@ -4,15 +4,15 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 var app = express().configure(function () { 
-    this.use('/public', express.static('public')); // <-- This right here 
+    this.use('/public', express.static('public')); 
 });
 const port = process.env.PORT || 3010;_
 app.use(cors());
+
 // app.use(express.static("public"));
-// parse application/x-www-form-urlencoded
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// parse application/json
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -52,13 +52,3 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-
-var app = express().configure(function () { 
-    this.use('/public', express.static('public')); // <-- This right here 
-}); 
-And then just put all your files inside that 'public' folder, for example: 
- 
-/public/docs/my_word_doc.docx 
-And then a regular old link will allow the user to download it: 
- 
-<a href="public/docs/my_word_doc.docx">My Word Doc</a>
