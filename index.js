@@ -9,7 +9,7 @@ const port = process.env.PORT || 3010;
 
 app.use(
   cors({
-    origin: "https://portfolio-taupe-eight-72.vercel.app",
+    origin: "*",
   })
 );
 
