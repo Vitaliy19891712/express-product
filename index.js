@@ -3,13 +3,15 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-var app = express().configure(function () { 
-    this.use('/public', express.static('public')); 
-});
-const port = process.env.PORT || 3010;_
+var app = express()
+//   .configure(function () {
+//   this.use("/public", express.static("public"));
+// });
+const port = process.env.PORT || 3010;
+
 app.use(cors());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -51,4 +53,3 @@ app.post("/sendMessage", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
