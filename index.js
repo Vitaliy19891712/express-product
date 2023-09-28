@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/pdf", express.static(__dirname + "/public/Resume.pdf"));
-
+app.use("/page", express.static(__dirname + "/public/page.js"));
 // app.get("/resume", (req, res) => {
 //   res.sendFile("Resume.pdf", { root: path.join(__dirname, "public") });
 // });
