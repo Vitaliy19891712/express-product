@@ -12,7 +12,7 @@ const port = process.env.PORT || 3010;
 
 app.use(cors());
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
