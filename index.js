@@ -5,9 +5,6 @@ const bodyParser = require("body-parser");
 
 var app = express();
 
-// app.configure(function () {
-//   this.use("/public", express.static("public"));
-// });
 const port = process.env.PORT || 3010;
 
 app.use(cors());
@@ -21,7 +18,7 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-
+app.use("/img", express.static(__dirname + "/public/weqwe.jpg"));
 app.use("/pdf", express.static(__dirname + "/public/Resume.pdf"));
 app.use("/page", express.static(__dirname + "/public/page.js"));
 // app.get("/resume", (req, res) => {
