@@ -47,8 +47,10 @@ app.post("/sendMessage", async (req, res) => {
     <div><h2>Email</h2>${email}</div>
     <div><h2>Сообщение</h2>${message}</div>`,
     });
+    console.log("success", info);
     res.sendStatus(200);
   } catch (err) {
+    console.log("mailerr", err);
     res.json(err);
   }
 });
